@@ -72,17 +72,21 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, handleDeletePlant, handleU
 
       <ConfirmCheck
         isOpen={showDeleteCheck}
-        title="Delete Plant"
-        message="Are you sure you want to delete this plant?"
+        title="Are you sure ?"
+        message="Once you delete the plant, you can not restore it."
         onConfirm={handleDeleteConfirmed}
         onCancel={() => setShowDeleteCheck(false)}
+        confirmButtonText="Yes, I'm sure"
+
       />
       <ConfirmCheck
         isOpen={showUpdateCheck}
-        title="Update Plant"
-        message="Are you sure you want to update this plant?"
+        title="Confirm update"
+        message="Once update is confirmed, the changes can not be reverted."
         onConfirm={handleUpdateConfirmed}
         onCancel={() => setShowUpdateCheck(false)}
+        confirmButtonText="Confirm"
+
       />
     </div>
   );

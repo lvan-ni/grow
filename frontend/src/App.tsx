@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { PlantT, NewPlantT } from './type';
+import { PlantT, NewPlantT, UpdatePlantT } from './type';
 import AddPlant from './components/AddPlant/AddPlant';
 import DisplayPlant from './components/DisplayPlant/DisplayPlant';
 import axios from 'axios';
@@ -32,7 +32,7 @@ const App = () => {
     }
   };
 
-  const handleUpdatePlant = async (_id: string, updatePlant: PlantT) => {
+  const handleUpdatePlant = async (_id: string, updatePlant: UpdatePlantT) => {
     const URL = `http://localhost:3000/api/plants/${_id}`;
     try {
       const updatedPlant = await axios.put(URL, updatePlant);
