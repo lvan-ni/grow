@@ -1,20 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { PlantT, NewPlantT } from './type';
 import AddPlant from './components/AddPlant/AddPlant';
 import DisplayPlant from './components/DisplayPlant/DisplayPlant';
-import './App.css';
-
-type PlantT = {
-  name: string;
-  light: string;
-  water: string;
-  note: string;
-};
-type NewPlant = {
-  name: string;
-  light: string;
-  water: string;
-};
+import axios from 'axios';
 
 const App = () => {
   const [plants, setPlants] = useState<PlantT[]>([]);
@@ -25,8 +13,7 @@ const App = () => {
       const URL = 'http://localhost:3000/api/plants';
       try {
         const response = await axios.get(URL);
-        console.log(response);
-        const allPlants = response.data.plants;
+        const allPlants = response.data;
         setPlants(allPlants);
       } catch (error) {
         setServerError('Error fetching the plants');
@@ -34,10 +21,10 @@ const App = () => {
     })();
   }, []);
 
-  const handleAddPlant = async (newPlant: NewPlant) => {
+  const handleAddPlant = async (newPlant: NewPlantT) => {
     const URL = 'http://localhost:3000/plants';
     try {
-      const response = await axios.post(URL);
+      const response = await axios.post(URL, newPlant);
       const addedPlant = response.data.plants;
       setPlants(existingPlants => [...existingPlants, addedPlant]);
     } catch (error) {
@@ -45,10 +32,11 @@ const App = () => {
     }
   };
 
-  const handleUpdatePlant = async (id: string) => {
+  const handleUpdatePlant = async (id: string, updatedPlant: PlantT) => {
     const URL = `http://localhost:3000/plants/${id}`;
     try {
-      const response = await axios.put(URL);
+      await axios.put(URL, updatedPlant);
+      setPlants(plants)
     } catch (error) {
       setServerError('Error updating the plants');
     }
@@ -57,7 +45,8 @@ const App = () => {
   const handleRemovePlant = async (id: string) => {
     const URL = `http://localhost:3000/plants/${id}`;
     try {
-      const response = await axios.delete(URL);
+      await axios.delete(URL);
+      setPlants((existingPlants) => existingPlants.filter(plant => plant._id !== id) )
     } catch (error) {
       setServerError('Error deleting the plants');
     }
