@@ -3,7 +3,7 @@ import cors from 'cors';
 import { connectDB, getPlants, createNewPlant, updatePlant, deletePlant } from './db';
 
 const app = express();
-const PORT = 5000;
+const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());

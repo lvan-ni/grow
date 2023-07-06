@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-const URL = "mongodb+srv://lvan:7fucx8sz|7nVtHTF@cluster0.o3yk2gx.mongodb.net/?retryWrites=true&w=majority";
+const URL = "mongodb+srv://lvan:0000@cluster0.o3yk2gx.mongodb.net/?retryWrites=true&w=majority";
 
 interface PlantT {
   name: string;
@@ -22,7 +22,7 @@ const getPlants = async () => {
   return await collection.find().toArray();
 };
 
-const createNewPlant = async (plant:PlantT) => {
+const createNewPlant = async (plant: PlantT) => {
   const collection = getCollection();
   return await collection.insertOne(plant);
 };
