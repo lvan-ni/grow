@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 const URL = "mongodb+srv://lvan:0000@cluster0.o3yk2gx.mongodb.net/?retryWrites=true&w=majority";
 
 interface PlantT {
@@ -34,7 +34,7 @@ const updatePlant = async (id: string, plant: PlantT) => {
 
 const deletePlant = async (id: string) => {
   const collection = getCollection();
-  return await collection.findOneAndDelete({ id: id });
+  return await collection.findOneAndDelete({ _id: new ObjectId(id)  });
 };
 
 export { connectDB, getPlants, createNewPlant, updatePlant, deletePlant };

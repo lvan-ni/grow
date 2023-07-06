@@ -11,13 +11,6 @@ app.use(express.json());
 
 connectDB();
 
-
-// const perenualAPI = async () => {
-//   const ExternalURL = 'https://perenual.com/api/species-list?page=1&key=sk-KhRK64a589f537fe71479';
-//   const res = await axios.get(ExternalURL);
-//   console.log(res);
-// };
-
 app.get('/api/plants', async (req, res) => {
   try {
     const plants = await getPlants();

@@ -19,13 +19,13 @@ const App = () => {
         setServerError('Error fetching the plants');
       }
     })();
-  }, []);
+  }, [plants]);
 
   const handleAddPlant = async (newPlant: NewPlantT) => {
-    const URL = 'http://localhost:3000/plants';
+    const URL = 'http://localhost:3000/api/plants';
     try {
       const response = await axios.post(URL, newPlant);
-      const addedPlant = response.data.plants;
+      const addedPlant = response.data;
       setPlants(existingPlants => [...existingPlants, addedPlant]);
     } catch (error) {
       setServerError('Error adding the plants');
@@ -33,38 +33,38 @@ const App = () => {
   };
 
   const handleUpdatePlant = async (id: string, updatedPlant: PlantT) => {
-    const URL = `http://localhost:3000/plants/${id}`;
+    const URL = `http://localhost:3000/api/plants/${id}`;
     try {
       await axios.put(URL, updatedPlant);
-      setPlants(plants)
+      setPlants(plants);
     } catch (error) {
       setServerError('Error updating the plants');
     }
-  }
+  };
 
-  const handleRemovePlant = async (id: string) => {
-    const URL = `http://localhost:3000/plants/${id}`;
+  const handleDeletePlant = async (_id: string) => {
+    const URL = `http://localhost:3000/api/plants/${_id}`;
     try {
       await axios.delete(URL);
-      setPlants((existingPlants) => existingPlants.filter(plant => plant._id !== id) )
+      setPlants(existingPlants => existingPlants.filter(plant => plant._id !== _id));
     } catch (error) {
       setServerError('Error deleting the plants');
     }
-  }
+  };
 
   return (
     <>
       <h1>GROW</h1>
-      <AddPlant 
+      <AddPlant
         handleAddPlant={handleAddPlant}
-        setServerError={setServerError} 
+        setServerError={setServerError}
         serverError={serverError}
       />
-      <DisplayPlant 
-        plants={plants} 
+      <DisplayPlant
+        plants={plants}
         handleUpdatePlant={handleUpdatePlant}
-        handleRemovePlant={handleRemovePlant}
-        setServerError={setServerError} 
+        handleDeletePlant={handleDeletePlant}
+        setServerError={setServerError}
         serverError={serverError}
       />
     </>
