@@ -1,10 +1,10 @@
 import React from 'react';
-import { PlantT } from '../../type';
+import { PlantT, UpdatePlantT } from '../../type';
 import PlantCard from '../PlantCard/PlantCard';
 
 type DisplayPlantProps = {
   plants: PlantT[];
-  handleUpdatePlant: (id: string, updatedPlant: PlantT) => void;
+  handleUpdatePlant: (id: string, updatedPlant: UpdatePlantT) => void;
   handleDeletePlant: (id: string) => void;
   setServerError: (error: string) => void;
   serverError: string;

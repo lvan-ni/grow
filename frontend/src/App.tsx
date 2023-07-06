@@ -32,11 +32,13 @@ const App = () => {
     }
   };
 
-  const handleUpdatePlant = async (id: string, updatedPlant: PlantT) => {
-    const URL = `http://localhost:3000/api/plants/${id}`;
+  const handleUpdatePlant = async (_id: string, updatePlant: PlantT) => {
+    const URL = `http://localhost:3000/api/plants/${_id}`;
     try {
-      await axios.put(URL, updatedPlant);
-      setPlants(plants);
+      const updatedPlant = await axios.put(URL, updatePlant);
+      console.log(updatedPlant);
+      console.log(updatePlant);
+      // setPlants(existingPlants => [...existingPlants, updatedPlant]);
     } catch (error) {
       setServerError('Error updating the plants');
     }

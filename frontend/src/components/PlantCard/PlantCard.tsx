@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { PlantT, UpdatePlantT } from '../../type';
+import ConfirmCheck from '../ConfirmCheck/ConfirmCheck';
 
 type PlantCardProps = {
   plant: PlantT;
@@ -10,33 +11,39 @@ type PlantCardProps = {
 };
 
 const PlantCard: React.FC<PlantCardProps> = ({ plant, handleDeletePlant, handleUpdatePlant }) => {
+  const [showDeleteCheck, setShowDeleteCheck] = useState(false);
+  const [showUpdateCheck, setShowUpdateCheck] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleEditButton = () => setIsEditing(true);
-  const handleUpdateButton = async () => {
+  const handleDeleteConfirmed = () => {
+    handleDeletePlant(plant._id);
+    setShowDeleteCheck(false);
+  };
+
+  const handleUpdateConfirmed = () => {
     const updatedPlant = {
-      name: nameRef.current?.value || plant.name,
-      light: lightRef.current?.value || plant.light,
-      water: waterRef.current?.value || plant.water,
-      note: noteRef.current?.value || plant.note,
+      ...plant,
+      name: nameRef.current?.value || '',
+      light: lightRef.current?.value || '',
+      water: waterRef.current?.value || '',
+      note: noteRef.current?.value || ''
     };
     handleUpdatePlant(plant._id, updatedPlant);
     setIsEditing(false);
+    setShowUpdateCheck(false);
   };
-  const handleCancelButton = () => setIsEditing(false);
 
   const nameRef = useRef<HTMLInputElement>(null);
   const lightRef = useRef<HTMLSelectElement>(null);
   const waterRef = useRef<HTMLSelectElement>(null);
   const noteRef = useRef<HTMLInputElement>(null);
 
-
   return (
     <div>
       {isEditing ? (
         <>
           <input ref={nameRef} defaultValue={plant.name} />
-          <button onClick={() => handleDeletePlant(plant._id)}>Delete</button>
+          <button onClick={() => setShowDeleteCheck(true)}>Delete</button>
           <select ref={lightRef} defaultValue={plant.light}>
             <option value="" disabled>Light Level</option>
             <option value="Bright Light">Bright Light</option>
@@ -50,18 +57,33 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, handleDeletePlant, handleU
             <option value="Every 30 days">Every 30 days</option>
           </select>
           <input ref={noteRef} defaultValue={plant.note} />
-          <button onClick={handleUpdateButton}>Update</button>
-          <button onClick={handleCancelButton}>Cancel</button>
+          <button onClick={() => setShowUpdateCheck(true)}>Update</button>
+          <button onClick={() => setIsEditing(false)}>Cancel</button>
         </>
       ) : (
         <>
           <h2>{plant.name}</h2>
-          <button onClick={handleEditButton}>Edit</button>
+          <button onClick={() => setIsEditing(true)}>Edit</button>
           <p>Light: {plant.light}</p>
           <p>Water: {plant.water}</p>
           <p>Note: {plant.note}</p>
         </>
       )}
+
+      <ConfirmCheck
+        isOpen={showDeleteCheck}
+        title="Delete Plant"
+        message="Are you sure you want to delete this plant?"
+        onConfirm={handleDeleteConfirmed}
+        onCancel={() => setShowDeleteCheck(false)}
+      />
+      <ConfirmCheck
+        isOpen={showUpdateCheck}
+        title="Update Plant"
+        message="Are you sure you want to update this plant?"
+        onConfirm={handleUpdateConfirmed}
+        onCancel={() => setShowUpdateCheck(false)}
+      />
     </div>
   );
 };
