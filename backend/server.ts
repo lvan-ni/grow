@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-// import { MongoClient } from 'mongodb';
+import { connectDB, getPlants, createNewPlant, updatePlant, deletePlant } from './db';
 
 const app = express();
 const PORT = 5000;
@@ -8,23 +8,53 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
-// const uri = "<Your MongoDB Atlas connection string>"; // Replace with your string
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+connectDB();
+
 
 app.get('/api/plants', async (req, res) => {
   try {
-    await client.connect();
-    const collection = client.db("PlantInfo").collection("MockData");
-    const plants = await collection.find().toArray();
-    res.json(plants);
+    const plants = await getPlants();
+    res
+      .status(200)
+      .json(plants);
   } catch (error) {
-    console.error(error);
-  } finally {
-    await client.close();
+    return res.status(404).json({ message: 'No plants found' });
   }
 });
 
-// The rest of your API routes...
+app.post("/api/plants", async (req, res) => {
+  try {
+    const newPlantToAdd = req.body;
+    const NewPlant = await createNewPlant(newPlantToAdd);
+    res
+    .status(200)
+    .json(NewPlant);
+  } catch (error) {
+    return res.status(400).json({ message: 'Cannot add plant' });
+  }
+});
+
+app.put("/api/plants/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedPlant = await updatePlant(id, req.body);
+    res
+    .status(200)
+    .json(updatedPlant);
+  } catch (error) {
+    return res.status(400).json({ message: 'Cannot update plant' });
+  }
+});
+
+app.delete("/api/plants/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedPlant =  await deletePlant(id);
+    res.json(deletedPlant);
+  } catch (error) {
+    return res.status(400).json({ message: 'Cannot delete plant' });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
