@@ -37,38 +37,73 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, handleDeletePlant, handleU
   const nameRef = useRef<HTMLInputElement>(null);
   const lightRef = useRef<HTMLSelectElement>(null);
   const waterRef = useRef<HTMLSelectElement>(null);
-  const noteRef = useRef<HTMLInputElement>(null);
+  const noteRef = useRef<HTMLTextAreaElement>(null);
 
   return (
     <div>
       {isEditing ? (
-        <>
-          <input ref={nameRef} defaultValue={plant.name} />
-          <button onClick={() => setShowDeleteCheck(true)}>Delete</button>
-          <select ref={lightRef} defaultValue={plant.light}>
-            <option value="" disabled>Light Level</option>
-            <option value="Bright Light">Bright Light</option>
-            <option value="Indirect Light">Indirect Light</option>
-            <option value="Low Light">Low Light</option>
-          </select>
-          <select ref={waterRef} defaultValue={plant.water}>
-            <option value="" disabled>Water Frequency</option>
-            <option value="Every 7 days">Every 7 days</option>
-            <option value="Every 14 days">Every 14 days</option>
-            <option value="Every 30 days">Every 30 days</option>
-          </select>
-          <input ref={noteRef} defaultValue={plant.note} />
-          <button onClick={() => setShowUpdateCheck(true)}>Update</button>
-          <button onClick={() => setIsEditing(false)}>Cancel</button>
-        </>
+
+        <div className='card__container'>
+
+          <div className='card__header'>
+            <div className='card__title-contianer'>
+              <input className='card__name' ref={nameRef} defaultValue={plant.name} />
+              <div className='card__titlebtn'>
+                <button className='card__deletebtn' onClick={() => setShowDeleteCheck(true)}>Delete</button>
+              </div>
+          </div>
+          </div>
+
+          <div className='card__body'>
+            <div className='select-group'>
+              <select className='card__light' ref={lightRef} defaultValue={plant.light}>
+                <option value="" disabled>Light Level</option>
+                <option value="Bright Light">Bright Light</option>
+                <option value="Indirect Light">Indirect Light</option>
+                <option value="Low Light">Low Light</option>
+              </select>
+              <select className='card__water' ref={waterRef} defaultValue={plant.water}>
+                <option value="" disabled>Water Frequency</option>
+                <option value="Every 7 days">Every 7 days</option>
+                <option value="Every 14 days">Every 14 days</option>
+                <option value="Every 30 days">Every 30 days</option>
+              </select>
+            </div>
+            <div className='card__note-container'>
+              <textarea className='card__note' ref={noteRef} defaultValue={plant.note} />
+            </div>
+          </div>
+
+          <div className='card__footer'>
+            <button className='card__updatebtn' onClick={() => setShowUpdateCheck(true)}>Update</button>
+            <button className='card__cancelbtn' onClick={() => setIsEditing(false)}>Cancel</button>
+          </div>
+
+        </div>
+
       ) : (
-        <>
-          <h2>{plant.name}</h2>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
-          <p>Light: {plant.light}</p>
-          <p>Water: {plant.water}</p>
-          <p>Note: {plant.note}</p>
-        </>
+
+        <div className='card__container'>
+
+          <div className='card__header'>
+            <div className='card__title-contianer'>
+              <h3 className='card__name'>{plant.name}</h3>
+              <div className='card__titlebtn'>
+                <button className='card__editbtn'onClick={() => setIsEditing(true)}>Edit</button>
+              </div>
+            </div>
+          </div>
+          <div className='card__body'>
+            <div className='select-group'>
+              <p className='card__light' >Light: {plant.light}</p>
+              <p className='card__water' >Water: {plant.water}</p>
+            </div>
+            <div className='card__note-container'>
+              <p className='card__note' >Note: {plant.note}</p>
+            </div>
+          </div>
+        </div>
+
       )}
 
       <ConfirmCheck

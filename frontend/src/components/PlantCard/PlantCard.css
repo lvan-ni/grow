@@ -1,4 +1,66 @@
-.card__name {
+.card__container{
+  margin: 1.4em;
+  border: solid #6b6b6b ;
+  border-radius: 0.4em;
+  padding: 1em;
+  max-width: 600px;
+}
 
+.card__header {
+  margin-bottom: 20px;
+}
+
+.card__title-contianer {
+  position: relative;
+  text-align: center;
+}
+
+.card__titlebtn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.card__body .select-group {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.4em;
+  padding-left: 0.4em;
+}
+
+.card__light {
+  width: 48%;
+}
+
+.card__water {
+  width: 48%;
+}
+
+.card__note-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+  padding-left: 0.4em;
+}
+
+.card__note {
+  width: 98%;
+  align-self: center;
+  /* text-align: center; */
+}
+
+.card__footer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button {
+  background-color: #a6e9a6;
+  border: solid #6b6b6b ;
+  max-width: 10em;
+  border-radius: 0.4em;
+  padding: 0.4em 1em;
+  cursor: pointer;
 }
 
