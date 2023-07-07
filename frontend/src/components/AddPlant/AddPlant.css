@@ -19,43 +19,29 @@
 .form__input-name {
   width: 20em;
   height: 2em;
+  border: solid #AEAEAE  0.1em;
+  border-radius: 0.2em;
 }
 
 .form_input-select {
   width: 20em;
   height: 2em;
+  border: solid #AEAEAE  0.1em;
+  border-radius: 0.2em;
 }
 
 .form__note {
   width: 20em;
-  height: 2em;
+  height: 4em;
+  border: solid #AEAEAE  0.1em;
+  border-radius: 0.2em;
 }
 
 .form__button-addplant {
-  border: solid #6b6b6b ;
+  border: solid #AEAEAE ;
   max-width: 10em;
   border-radius: 0.4em;
   padding: 0.8em 2.8em;
   margin-top: 1.6em;
-  background-color: #a6e9a6;
+  background-color: #9cdcc7;
 }
-
-/* .form__input-field {
-  display: flex;
-  width: 22em;
-  height: 1.8em;
-  justify-content: space-between;
-  margin: 0.8em 0;
-  gap: 0.4em;
-} */
-
-/* .form__select-field {
-  display: flex;
-  width: 22em;
-  height: 1.8em;
-  justify-content: space-between;
-  margin-bottom: 0.4em;
-  gap: 0.4em;
-} */
-
-

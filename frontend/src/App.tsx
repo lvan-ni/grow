@@ -17,7 +17,7 @@ const App = () => {
         const allPlants = response.data;
         setPlants(allPlants);
       } catch (error) {
-        setServerError('Error fetching the plants');
+        setServerError(`Error fetching the plants: ${error}`);
       }
     })();
   }, [plants]);
@@ -29,19 +29,16 @@ const App = () => {
       const addedPlant = response.data;
       setPlants(existingPlants => [...existingPlants, addedPlant]);
     } catch (error) {
-      setServerError('Error adding the plants');
+      setServerError(`Error adding the plants: ${error}`);
     }
   };
 
   const handleUpdatePlant = async (_id: string, updatePlant: UpdatePlantT) => {
     const URL = `http://localhost:3000/api/plants/${_id}`;
     try {
-      const updatedPlant = await axios.post(URL, updatePlant);
-      console.log(updatedPlant);
-      console.log(updatePlant);
+      await axios.post(URL, updatePlant);
     } catch (error) {
-      console.log(error)
-      setServerError('Error updating the plants');
+      setServerError(`Error updating the plants: ${error}`);
     }
   };
 
@@ -51,7 +48,7 @@ const App = () => {
       await axios.delete(URL);
       setPlants(existingPlants => existingPlants.filter(plant => plant._id !== _id));
     } catch (error) {
-      setServerError('Error deleting the plants');
+      setServerError(`Error deleting the plants: ${error}`);
     }
   };
 

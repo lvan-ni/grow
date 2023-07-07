@@ -18,11 +18,11 @@ const DisplayPlant: React.FC<DisplayPlantProps> = ({
   serverError,
 }) => {
   return (
-    <div>
+    <div className='display-container'>
       <h2 className='display-title'>My Plants</h2>
-      {plants.map((plant: PlantT) => (
+      {plants.map((plant: PlantT, index) => (
         <PlantCard
-          key={plant.name + plant.name.length}
+          key={`${index}-${plant}`}
           plant={plant}
           handleUpdatePlant={handleUpdatePlant}
           handleDeletePlant={handleDeletePlant}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './ConfirmCheck.css';
 
 type ConfirmCheckProps = {
   isOpen: boolean;
@@ -15,14 +16,16 @@ const ConfirmCheck: React.FC<ConfirmCheckProps> = ({ isOpen, title, message, onC
   }
 
   return (
-    <div>
-      <div>
-        <h2>{title}</h2>
-        <p>{message}</p>
-        <button onClick={onConfirm}>{confirmButtonText}</button>
-        <button onClick={onCancel}>Cancel</button>
+      <div className="confirmation-card">
+        <div className="card-content">
+          <h3>{title}</h3>
+          <p>{message}</p>
+          <div className='card-footer'>
+            <button onClick={onConfirm} className='confirm__confirmbtn'>{confirmButtonText}</button>
+            <button onClick={onCancel} className='confirm__cancelbtn'>Cancel</button>
+          </div>
+        </div>
       </div>
-    </div>
   );
 };
 

@@ -56,14 +56,14 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, handleDeletePlant, handleU
 
           <div className='card__body'>
             <div className='select-group'>
-              <select className='card__light' ref={lightRef} defaultValue={plant.light}>
-                <option value="" disabled>Light Level</option>
+              <select className='card__light ' ref={lightRef} defaultValue={plant.light}>
+                <option value="" disabled>Light level</option>
                 <option value="Bright Light">Bright Light</option>
                 <option value="Indirect Light">Indirect Light</option>
                 <option value="Low Light">Low Light</option>
               </select>
               <select className='card__water' ref={waterRef} defaultValue={plant.water}>
-                <option value="" disabled>Water Frequency</option>
+                <option value="" disabled>Water frequency</option>
                 <option value="Every 7 days">Every 7 days</option>
                 <option value="Every 14 days">Every 14 days</option>
                 <option value="Every 30 days">Every 30 days</option>
@@ -87,7 +87,7 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, handleDeletePlant, handleU
 
           <div className='card__header'>
             <div className='card__title-contianer'>
-              <h3 className='card__name'>{plant.name}</h3>
+              <h4 className='card__name'>{plant.name}</h4>
               <div className='card__titlebtn'>
                 <button className='card__editbtn'onClick={() => setIsEditing(true)}>Edit</button>
               </div>
@@ -113,7 +113,6 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, handleDeletePlant, handleU
         onConfirm={handleDeleteConfirmed}
         onCancel={() => setShowDeleteCheck(false)}
         confirmButtonText="Yes, I'm sure"
-
       />
       <ConfirmCheck
         isOpen={showUpdateCheck}
@@ -122,7 +121,6 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, handleDeletePlant, handleU
         onConfirm={handleUpdateConfirmed}
         onCancel={() => setShowUpdateCheck(false)}
         confirmButtonText="Confirm"
-
       />
     </div>
   );

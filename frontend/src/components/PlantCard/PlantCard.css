@@ -10,6 +10,10 @@
   margin-bottom: 20px;
 }
 
+h4 {
+  font-family: 'Silkscreen', cursive;
+}
+
 .card__title-contianer {
   position: relative;
   text-align: center;
@@ -47,7 +51,6 @@
 .card__note {
   width: 98%;
   align-self: center;
-  /* text-align: center; */
 }
 
 .card__footer {
@@ -56,11 +59,41 @@
 }
 
 button {
-  background-color: #a6e9a6;
-  border: solid #6b6b6b ;
+  background-color: #9cdcc7;
+  border: solid #AEAEAE ;
   max-width: 10em;
   border-radius: 0.4em;
   padding: 0.4em 1em;
   cursor: pointer;
 }
 
+.card__cancelbtn {
+  background-color: #F1F1F1;
+}
+
+.card__deletebtn {
+  background-color: #F1A2AC;
+}
+
+.card__editbtn {
+  background-color: #F1F1F1;
+}
+
+p {
+  color: #343434;
+}
+
+input {
+  border: solid #AEAEAE  0.1em;
+  border-radius: 0.2em;
+}
+
+select {
+  border: solid #AEAEAE  0.1em;
+  border-radius: 0.2em;
+}
+
+textarea {
+  border: solid #AEAEAE  0.1em;
+  border-radius: 0.2em;
+}
