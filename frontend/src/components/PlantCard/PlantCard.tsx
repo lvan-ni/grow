@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { PlantT, UpdatePlantT } from '../../type';
 import ConfirmCheck from '../ConfirmCheck/ConfirmCheck';
+import './PlantCard.css';
 
 type PlantCardProps = {
   plant: PlantT;

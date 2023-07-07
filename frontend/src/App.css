@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;800&family=Silkscreen&display=swap');
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Schibsted Grotesk', sans-serif;
+  scroll-behavior: smooth;
+
+}
+
+.app-title {
+  text-align: center;
+  margin-top: 0.4em;
+  font-family: 'Silkscreen', cursive;
+  font-weight: 400;
+  font-size: 5em;
+  color: #a6e9a6;
+}

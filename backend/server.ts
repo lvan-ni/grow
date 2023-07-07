@@ -14,42 +14,38 @@ connectDB();
 app.get('/api/plants', async (req, res) => {
   try {
     const plants = await getPlants();
-    res
-      .status(200)
-      .json(plants);
+    res.status(200).json(plants);
   } catch (error) {
     return res.status(404).json({ message: 'No plants found' });
   }
 });
 
-app.post("/api/plants", async (req, res) => {
+app.post('/api/plants', async (req, res) => {
   try {
     const newPlantToAdd = req.body;
     const NewPlant = await createNewPlant(newPlantToAdd);
-    res
-    .status(200)
-    .json(NewPlant);
+    res.status(200).json(NewPlant);
   } catch (error) {
     return res.status(400).json({ message: 'Cannot add plant' });
   }
 });
 
-app.put("/api/plants/:id", async (req, res) => {
+app.post('/api/plants/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const updatedPlant = await updatePlant(id, req.body);
-    res
-    .status(200)
-    .json(updatedPlant);
+    const PlantToUpdate = req.body;
+    const updatedPlant = await updatePlant(id, PlantToUpdate);
+    res.status(200).json(updatedPlant);
   } catch (error) {
+    console.log(error)
     return res.status(400).json({ message: 'Cannot update plant' });
   }
 });
 
-app.delete("/api/plants/:id", async (req, res) => {
+app.delete('/api/plants/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const deletedPlant =  await deletePlant(id);
+    const deletedPlant = await deletePlant(id);
     res.json(deletedPlant);
   } catch (error) {
     return res.status(400).json({ message: 'Cannot delete plant' });

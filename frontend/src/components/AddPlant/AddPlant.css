@@ -1,0 +1,64 @@
+.add-plant__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.4em;
+  gap: 0.6em;
+}
+
+.add-plant__title {
+  text-align: center;
+  margin-bottom: 0.4em;
+  font-family: 'Silkscreen', cursive;
+}
+
+.form__error {
+  color: red;
+}
+
+.form__input-name {
+  width: 20em;
+  height: 2em;
+}
+
+.form_input-select {
+  width: 20em;
+  height: 2em;
+}
+
+.form__note {
+  width: 20em;
+  height: 2em;
+}
+
+.form__button-addplant {
+  border: solid #6b6b6b ;
+  max-width: 10em;
+  border-radius: 0.4em;
+  padding: 0.8em 2.8em;
+  margin-top: 1.6em;
+  background-color: #a6e9a6;
+  /* background-color: #89B6A8; */
+
+}
+
+
+/* .form__input-field {
+  display: flex;
+  width: 22em;
+  height: 1.8em;
+  justify-content: space-between;
+  margin: 0.8em 0;
+  gap: 0.4em;
+} */
+
+/* .form__select-field {
+  display: flex;
+  width: 22em;
+  height: 1.8em;
+  justify-content: space-between;
+  margin-bottom: 0.4em;
+  gap: 0.4em;
+} */
+
+
