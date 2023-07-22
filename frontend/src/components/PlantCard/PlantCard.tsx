@@ -58,9 +58,9 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, handleDeletePlant, handleU
             <div className='select-group'>
               <select className='card__light ' ref={lightRef} defaultValue={plant.light}>
                 <option value="" disabled>Light level</option>
-                <option value="Bright Light">Bright Light</option>
-                <option value="Indirect Light">Indirect Light</option>
-                <option value="Low Light">Low Light</option>
+                <option value="Bright Light">Bright light</option>
+                <option value="Indirect Light">Indirect light</option>
+                <option value="Low Light">Low light</option>
               </select>
               <select className='card__water' ref={waterRef} defaultValue={plant.water}>
                 <option value="" disabled>Water frequency</option>

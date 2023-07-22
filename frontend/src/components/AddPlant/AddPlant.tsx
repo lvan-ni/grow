@@ -78,9 +78,9 @@ const AddPlant: React.FC<AddPlantProps> = ({ handleAddPlant, setServerError, ser
         <option value="" disabled className='select-light'>
           Light level
         </option>
-        <option value="Bright Light">Bright Light</option>
-        <option value="Indirect Light">Indirect Light</option>
-        <option value="Low Light">Low Light</option>
+        <option value="Bright Light">Bright light</option>
+        <option value="Indirect Light">Indirect light</option>
+        <option value="Low Light">Low light</option>
       </select>
       <select ref={waterRef} defaultValue="" required className="form_input-select" onKeyDown={enterKey}>
         <option value="" disabled className='select-water'>
