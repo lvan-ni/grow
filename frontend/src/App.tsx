@@ -11,7 +11,7 @@ const App = () => {
 
   useEffect(() => {
     (async () => {
-      const URL = 'http://localhost:3000/api/plants';
+      const URL = 'http://localhost:3001/api/plants';
       try {
         const response = await axios.get(URL);
         const allPlants = response.data;
@@ -23,7 +23,7 @@ const App = () => {
   }, [plants]);
 
   const handleAddPlant = async (newPlant: NewPlantT) => {
-    const URL = 'http://localhost:3000/api/plants';
+    const URL = 'http://localhost:3001/api/plants';
     try {
       const response = await axios.post(URL, newPlant);
       const addedPlant = response.data;
@@ -34,7 +34,7 @@ const App = () => {
   };
 
   const handleUpdatePlant = async (_id: string, updatePlant: UpdatePlantT) => {
-    const URL = `http://localhost:3000/api/plants/${_id}`;
+    const URL = `http://localhost:3001/api/plants/${_id}`;
     try {
       await axios.post(URL, updatePlant);
     } catch (error) {
@@ -43,7 +43,7 @@ const App = () => {
   };
 
   const handleDeletePlant = async (_id: string) => {
-    const URL = `http://localhost:3000/api/plants/${_id}`;
+    const URL = `http://localhost:3001/api/plants/${_id}`;
     try {
       await axios.delete(URL);
       setPlants(existingPlants => existingPlants.filter(plant => plant._id !== _id));

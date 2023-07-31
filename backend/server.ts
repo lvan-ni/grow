@@ -4,7 +4,7 @@ import axios from 'axios';
 import { connectDB, getPlants, createNewPlant, updatePlant, deletePlant } from './db';
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
