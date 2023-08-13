@@ -9,13 +9,13 @@ Grow is a full-stack plant care tracking application. Born out of a 24-hour hack
 
 ## Features
 
-**Plant Tracking**: Add your plants and monitor their care requirements.
-**Watering & Sunlight**: Set specific watering schedules and sunlight needs for each plant.
-**Notes**: Keep custom notes for every plant, ensuring personalized care.
-**Upcoming**: Features in the pipeline include user profile management, watering reminders, profile sharing, and more.
+- **Plant Tracking**: Add your plants and monitor their care requirements.
+- **Watering & Sunlight**: Set specific watering schedules and sunlight needs for each plant.
+- **Notes**: Keep custom notes for every plant, ensuring personalized care.
+- **Upcoming**: Features in the pipeline include user profile management, watering reminders, profile sharing, and more.
 
 ## Tech Stack
 
-**Frontend**: Designed using Figma, and built on the MERN stack.
-**Backend**: Express.js with Node.js, paired with MongoDB for data management.
+- **Frontend**: Designed using Miro, and built on the MERN stack.
+- **Backend**: Express.js with Node.js, paired with MongoDB for data management.
 
