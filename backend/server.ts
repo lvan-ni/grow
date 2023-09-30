@@ -1,10 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import axios from 'axios';
 import { connectDB, getPlants, createNewPlant, updatePlant, deletePlant } from './db';
 
 const app = express();
-const PORT = 3001 || process.env.PORT;
+const PORT = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
@@ -23,18 +22,18 @@ app.get('/api/plants', async (req, res) => {
 app.post('/api/plants', async (req, res) => {
   try {
     const newPlantToAdd = req.body;
-    const NewPlant = await createNewPlant(newPlantToAdd);
-    res.status(200).json(NewPlant);
+    const newPlant = await createNewPlant(newPlantToAdd);
+    res.status(201).json(newPlant);
   } catch (error) {
     return res.status(400).json({ message: 'Cannot add plant' });
   }
 });
 
-app.post('/api/plants/:id', async (req, res) => {
+app.put('/api/plants/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const PlantToUpdate = req.body;
-    const updatedPlant = await updatePlant(id, PlantToUpdate);
+    const plantToUpdate = req.body;
+    const updatedPlant = await updatePlant(id, plantToUpdate);
     res.status(200).json(updatedPlant);
   } catch (error) {
     console.log(error)
